@@ -1,0 +1,15 @@
+version: "3"
+services:
+  idios:
+    build: .
+    ports:
+      - "4213:4213"
+    depends_on:
+      - milvus
+  milvus:
+    image: milvusdb/milvus:latest
+    environment:
+      - MILVUS_HOST=milvus
+      - MILVUS_PORT=19530
+    ports:
+      - "19530:19530"
